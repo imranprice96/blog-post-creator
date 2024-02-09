@@ -1,4 +1,4 @@
-//import "../styles/Post.css";
+import "../styles/Post.css";
 import moment from "moment";
 import { Link } from "react-router-dom";
 import parse from "html-react-parser";
@@ -11,7 +11,7 @@ function Post({ post }) {
   }
 
   return (
-    <Link to={`posts/${post._id}`}>
+    <Link to={`posts/${post._id}`} className="post-link">
       <StyledPostContainer>
         <PostTitle>{parse(post.title)}</PostTitle>
         <PostInfo>

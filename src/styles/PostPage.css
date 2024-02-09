@@ -1,0 +1,52 @@
+.arrow {
+  font-size: 3rem;
+  text-decoration: none;
+  color: black;
+}
+
+.arrow:hover {
+  color: var(--hover);
+}
+
+hr {
+  width: 100%;
+  border: 1px solid var(--box-outer);
+}
+
+h1 {
+  margin: 1rem 0 1rem 0;
+  font-size: 2rem;
+}
+
+#post-text {
+  padding: 1rem 0 1rem 0;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.post-body {
+  border-radius: 0.2rem;
+  padding: 1rem;
+  background-color: var(--box-inner);
+}
+
+.post-footer {
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.post-footer p {
+  font-size: 0.7rem;
+}
+
+.postpage-body {
+  margin-top: 1rem;
+  background-color: var(--box-inner);
+  width: 70%;
+  max-width: var(--maxW);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

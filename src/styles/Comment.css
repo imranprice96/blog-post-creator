@@ -1,0 +1,15 @@
+.comment-info {
+  padding-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-style: italic;
+}
+
+.comment-text {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.user {
+  display: flex;
+  gap: 0.7rem;
+}
