@@ -1,0 +1,27 @@
+.topnav {
+  background-color: var(--box-outer);
+  overflow: hidden;
+  padding: 2rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.topnav a {
+  letter-spacing: 0.7rem;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.6rem;
+  width: 70%;
+  max-width: var(--maxW);
+  color: black;
+  font-size: 2rem;
+}
+
+.topnav h1 {
+  padding-left: 1rem;
+}
+
+.topnav a:hover {
+  text-decoration-style: solid;
+}
