@@ -3,20 +3,24 @@ import App from "./App";
 import Navbar from "./Navbar";
 import PostPage from "./PostPage";
 import ErrorPage from "./ErrorPage";
+import { useEffect, useState } from "react";
+import LoginPage from "./LoginPage";
 
-function Layout() {
+function Layout({ setToken }) {
   return (
     <>
-      <Navbar />
+      <Navbar setToken={setToken} />
       <Outlet />
     </>
   );
 }
 
 const Router = () => {
+  const [token, setToken] = useState(localStorage.getItem("jwt-token"));
+
   const router = createBrowserRouter([
     {
-      element: <Layout />,
+      element: <Layout setToken={setToken} />,
       errorElement: <ErrorPage />,
       children: [
         {
@@ -28,6 +32,12 @@ const Router = () => {
         {
           path: "posts/:postid",
           element: <PostPage />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "login",
+          element: <LoginPage setToken={setToken} />,
+          errorElement: <ErrorPage />,
         },
       ],
     },

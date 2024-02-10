@@ -1,55 +1,63 @@
 import { useState } from "react";
-import { json } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = ({ setToken }) => {
   const url = import.meta.env.VITE_API_URL;
-  const key = import.meta.env.VITE_SECRET_KEY;
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSumbit = async (e) => {
     e.preventDefault();
     const response = await fetch(`${url}/login`, {
-      method: "DELETE",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: json.stringify({ username, password }),
+      body: JSON.stringify({ username, password }),
     });
     const result = await response.json();
-    if (result.status() == 200) {
+    if (response.status == 200) {
       console.log(result);
-      localStorage.setItem("jwt-token", response.token);
+      localStorage.setItem("jwt-token", result.token);
       setUsername("");
       setPassword("");
+      navigate("/");
+      setToken(response.token);
+      alert("Logged in successfully");
     } else {
       console.log(result);
+      setError(result);
     }
   };
 
   return (
     <div>
       <form onSubmit={handleSumbit}>
-        <label htmlFor="username">
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          Username:
-        </label>
-        <label htmlFor="password">
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          Password:
-        </label>
+        <label htmlFor="username">Username:</label>{" "}
+        <input
+          type="text"
+          name="username"
+          id="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <label htmlFor="password">Password:</label>{" "}
+        <input
+          type="password"
+          name="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <button type="submit">Login</button>
       </form>
+      <span>
+        <p>{error.error}</p>
+      </span>
     </div>
   );
 };

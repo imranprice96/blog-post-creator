@@ -3,25 +3,66 @@
   overflow: hidden;
   padding: 2rem 0 2rem 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  width: 100%;
 }
 
-.topnav a {
+#title {
   letter-spacing: 0.7rem;
   font-weight: bold;
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 0.6rem;
-  width: 70%;
   max-width: var(--maxW);
   color: black;
   font-size: 2rem;
+  margin-right: auto;
 }
 
 .topnav h1 {
   padding-left: 1rem;
 }
 
-.topnav a:hover {
+#title:hover {
   text-decoration-style: solid;
+}
+
+.nav-info {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-info * {
+  padding: 0.5rem 1rem;
+  width: 100%;
+}
+
+.nav-info a,
+button {
+  max-width: 100px;
+}
+
+.nav-info a {
+  padding: 0;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 100%;
+  width: 70%;
+  max-width: var(--maxW);
+  padding: 0 1rem;
+}
+
+.signed-in {
+  color: green;
+}
+
+.signed-out {
+  color: red;
 }
