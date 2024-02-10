@@ -50,9 +50,19 @@ function App() {
     return (
       <div className="container">
         <div className="main-body">
-          {posts.map(
-            (post) => post.published && <Post key={post._id} post={post} />
-          )}
+          <div className="published-container">
+            <h2 className="published-heading">Published</h2>
+            {posts.map(
+              (post) => post.published && <Post key={post._id} post={post} />
+            )}
+          </div>
+          <hr></hr>
+          <div className="not-published-container">
+            <h2 className="published-heading">Not Published</h2>
+            {posts.map(
+              (post) => !post.published && <Post key={post._id} post={post} />
+            )}
+          </div>
         </div>
       </div>
     );
@@ -60,3 +70,5 @@ function App() {
 }
 
 export default App;
+
+// Separate published and unpublished

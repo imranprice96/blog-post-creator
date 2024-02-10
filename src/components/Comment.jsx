@@ -12,6 +12,9 @@ function Comment({ comment }) {
 
   return (
     <div>
+      <span>
+        <button>Delete</button>
+      </span>
       <p className="comment-text">{parse(comment.text)}</p>
       <div className="comment-info">
         <div className="user">
