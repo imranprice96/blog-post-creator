@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../styles/Login.css";
 
 const LoginPage = ({ setToken }) => {
   const url = import.meta.env.VITE_API_URL;
@@ -33,31 +35,36 @@ const LoginPage = ({ setToken }) => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSumbit}>
-        <label htmlFor="username">Username:</label>{" "}
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <label htmlFor="password">Password:</label>{" "}
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
-      <span>
-        <p>{error.error}</p>
-      </span>
+    <div className="container">
+      <div className="main-body">
+        <Link to="/" className="arrow">
+          &larr;
+        </Link>
+        <form onSubmit={handleSumbit} className="login-form">
+          <label htmlFor="username">Username:</label>{" "}
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <label htmlFor="password">Password:</label>{" "}
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        <span>
+          <p>{error.error}</p>
+        </span>
+      </div>
     </div>
   );
 };

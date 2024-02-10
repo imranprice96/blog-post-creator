@@ -11,6 +11,7 @@ function PostPage() {
   const [loadingPost, setLoadingPost] = useState(true);
   const [loadingComments, setLoadingComments] = useState(true);
   const [error, setError] = useState();
+  const [token, setToken] = useState(localStorage.getItem("jwt-token"));
 
   const [comments, setComments] = useState();
   const [commentCount, setCommentCount] = useState(0);
@@ -94,24 +95,29 @@ function PostPage() {
             &larr;
           </Link>
           <div className="post-body">
-            <span className="post-button-wrapper">
-              <button>
-                <Link to="">Edit</Link>
-              </button>
+            {token != null && (
+              <span className="post-button-wrapper">
+                <button>
+                  <Link to="">Edit</Link>
+                </button>
 
-              <div
-                className="delete-button"
-                onClick={() => {
-                  if (
-                    window.confirm("Are you sure you wish to delete this item?")
-                  ) {
-                    console.log("*****");
-                  }
-                }}
-              >
-                <button>Delete</button>
-              </div>
-            </span>
+                <div
+                  className="delete-button"
+                  onClick={() => {
+                    if (
+                      window.confirm(
+                        "Are you sure you wish to delete this item?"
+                      )
+                    ) {
+                      console.log("*****");
+                    }
+                  }}
+                >
+                  <button>Delete</button>
+                </div>
+              </span>
+            )}
+
             <h1>{parse(post.title)}</h1>
             <h2 className="post-status">
               ({post.published ? "Published" : "Not published"})

@@ -1,0 +1,11 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  line-height: 1rem;
+}
+
+.login-form input {
+  line-height: 2rem;
+  max-width: 300px;
+}

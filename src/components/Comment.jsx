@@ -11,6 +11,7 @@ function Comment({ comment, postid, setCommentCount, setComments }) {
     const dateFormat = "Do MMMM YYYY";
     return moment(date).format(dateFormat);
   }
+  const [token, setToken] = useState(localStorage.getItem("jwt-token"));
 
   const handleCommentDelete = async (commentid, postid) => {
     const token = localStorage.getItem("jwt-token");
@@ -39,16 +40,19 @@ function Comment({ comment, postid, setCommentCount, setComments }) {
   return (
     <div>
       <span className="comment-button-wrapper">
-        <div
-          className="delete-button"
-          onClick={() => {
-            if (window.confirm("Are you sure you wish to delete this item?")) {
-              handleCommentDelete(comment._id, postid);
-            }
-          }}
-        >
-          <button>Delete</button>
-        </div>
+        {token != null && (
+          <button
+            onClick={() => {
+              if (
+                window.confirm("Are you sure you wish to delete this item?")
+              ) {
+                handleCommentDelete(comment._id, postid);
+              }
+            }}
+          >
+            Delete
+          </button>
+        )}
       </span>
       <p className="comment-text">{parse(comment.text)}</p>
       <div className="comment-info">
