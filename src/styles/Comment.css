@@ -13,3 +13,8 @@
   display: flex;
   gap: 0.7rem;
 }
+
+.comment-button-wrapper {
+  display: flex;
+  justify-content: end;
+}

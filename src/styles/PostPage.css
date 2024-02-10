@@ -50,3 +50,14 @@ h1 {
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.post-button-wrapper {
+  display: flex;
+  justify-content: end;
+  gap: 0.5rem;
+}
+
+.post-status {
+  font-style: italic;
+  font-size: 1.2rem;
+}

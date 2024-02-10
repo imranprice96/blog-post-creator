@@ -94,7 +94,28 @@ function PostPage() {
             &larr;
           </Link>
           <div className="post-body">
+            <span className="post-button-wrapper">
+              <button>
+                <Link to="">Edit</Link>
+              </button>
+
+              <div
+                className="delete-button"
+                onClick={() => {
+                  if (
+                    window.confirm("Are you sure you wish to delete this item?")
+                  ) {
+                    console.log("*****");
+                  }
+                }}
+              >
+                <button>Delete</button>
+              </div>
+            </span>
             <h1>{parse(post.title)}</h1>
+            <h2 className="post-status">
+              ({post.published ? "Published" : "Not published"})
+            </h2>
 
             <hr></hr>
             <p id="post-text">{parse(post.text)}</p>
