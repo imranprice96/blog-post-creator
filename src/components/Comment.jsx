@@ -5,6 +5,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import parse from "html-react-parser";
 
 function Comment({ comment, postid }) {
+  const url = import.meta.env.VITE_API_URL;
   function getDate(date) {
     const dateFormat = "Do MMMM YYYY";
     return moment(date).format(dateFormat);
@@ -15,13 +16,13 @@ function Comment({ comment, postid }) {
       `${url}/api/posts/${postid}/comments/${commentid}`,
       {
         method: "DELETE",
-        body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
         },
       }
     );
     const result = await response.json();
+    console.log(result);
   };
 
   return (
@@ -31,9 +32,9 @@ function Comment({ comment, postid }) {
           className="delete-button"
           onClick={() => {
             if (window.confirm("Are you sure you wish to delete this item?")) {
-              //handleCommentDelete();
-              console.log(comment);
-              console.log(postid);
+              handleCommentDelete(comment._id, postid);
+              //console.log(comment);
+              //console.log(postid);
             }
           }}
         >
