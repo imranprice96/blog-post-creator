@@ -19,7 +19,7 @@ const LoginPage = ({ setToken }) => {
     });
     const result = await response.json();
     if (response.status == 200) {
-      console.log(result);
+      //console.log(result);
       localStorage.setItem("jwt-token", result.token);
       setUsername("");
       setPassword("");
@@ -27,7 +27,7 @@ const LoginPage = ({ setToken }) => {
       setToken(response.token);
       alert("Logged in successfully");
     } else {
-      console.log(result);
+      //console.log(result);
       setError(result);
     }
   };

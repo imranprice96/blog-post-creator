@@ -1,13 +1,16 @@
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Navbar({ setToken }) {
   const token = localStorage.getItem("jwt-token");
+  const navigate = useNavigate();
   const logout = () => {
     setToken(null);
     localStorage.removeItem("jwt-token");
     alert("Logged out successfully");
+    navigate("/login");
   };
 
   if (token == null) {

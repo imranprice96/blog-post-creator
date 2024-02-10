@@ -7,6 +7,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
   const url = import.meta.env.VITE_API_URL;
+  const [token, setToken] = useState("");
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -27,6 +28,7 @@ function App() {
         setLoading(false);
       }
     };
+    setToken(localStorage.getItem("jwt-token"));
     fetchPosts();
   }, []);
 
@@ -58,9 +60,13 @@ function App() {
           </div>
           <hr></hr>
           <div className="not-published-container">
-            <h2 className="published-heading">Not Published</h2>
+            <h2 className="published-heading">
+              {token != null ? "Not Published" : ""}
+            </h2>
             {posts.map(
-              (post) => !post.published && <Post key={post._id} post={post} />
+              (post) =>
+                !post.published &&
+                token != null && <Post key={post._id} post={post} />
             )}
           </div>
         </div>

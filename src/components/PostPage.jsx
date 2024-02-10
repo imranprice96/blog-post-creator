@@ -127,7 +127,13 @@ function PostPage() {
               </p>
             </div>
           </div>
-          <Comments comments={comments} count={commentCount} postid={postid} />
+          <Comments
+            comments={comments}
+            count={commentCount}
+            setCommentCount={setCommentCount}
+            setComments={setComments}
+            postid={postid}
+          />
         </div>
       </div>
     );

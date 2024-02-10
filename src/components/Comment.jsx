@@ -5,7 +5,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import parse from "html-react-parser";
 import { useEffect, useState } from "react";
 
-function Comment({ comment, postid }) {
+function Comment({ comment, postid, setCommentCount, setComments }) {
   const url = import.meta.env.VITE_API_URL;
   function getDate(date) {
     const dateFormat = "Do MMMM YYYY";
@@ -14,7 +14,6 @@ function Comment({ comment, postid }) {
 
   const handleCommentDelete = async (commentid, postid) => {
     const token = localStorage.getItem("jwt-token");
-    console.log(localStorage.getItem("jwt-token"));
     const response = await fetch(
       `${url}/api/posts/${postid}/comments/${commentid}`,
       {
@@ -28,9 +27,12 @@ function Comment({ comment, postid }) {
     const result = await response.json();
     if (result.success) {
       alert("Comment delelted successfully");
+      setCommentCount((count) => count - 1);
+      setComments((comments) =>
+        comments.filter((item) => item._id != comment._id)
+      );
     } else {
       alert(result.error);
-      console.log(result);
     }
   };
 
@@ -42,8 +44,6 @@ function Comment({ comment, postid }) {
           onClick={() => {
             if (window.confirm("Are you sure you wish to delete this item?")) {
               handleCommentDelete(comment._id, postid);
-              //console.log(comment);
-              //console.log(postid);
             }
           }}
         >
