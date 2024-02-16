@@ -44,12 +44,15 @@
   max-width: 100px;
 }
 
-.nav-info > button {
+.nav-info > a {
+  display: flex;
+  justify-content: end;
+  padding: 0;
   max-width: 100px;
 }
 
-.nav-info a {
-  padding: 0;
+.nav-info > button {
+  max-width: 100px;
 }
 
 .nav-container {

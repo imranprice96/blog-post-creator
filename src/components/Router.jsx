@@ -5,7 +5,7 @@ import PostPage from "./PostPage";
 import ErrorPage from "./ErrorPage";
 import { useEffect, useState } from "react";
 import LoginPage from "./LoginPage";
-import CommentCreate from "./CommentCreate";
+import PostCreate from "./PostCreate";
 
 function Layout({ setToken }) {
   return (
@@ -42,7 +42,7 @@ const Router = () => {
         },
         {
           path: "posts/create",
-          element: <CommentCreate />,
+          element: <PostCreate />,
 
           errorElement: <ErrorPage />,
         },

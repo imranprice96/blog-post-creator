@@ -59,7 +59,9 @@ const LoginPage = ({ setToken }) => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit">Login</button>
+          <button type="submit" id="login-btn">
+            Login
+          </button>
         </form>
         <span>
           <p>{error.error}</p>

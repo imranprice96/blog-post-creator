@@ -9,3 +9,9 @@
   line-height: 2rem;
   max-width: 300px;
 }
+
+#login-btn {
+  width: 100%;
+  max-width: 100px;
+  padding: 0.5rem 1rem;
+}

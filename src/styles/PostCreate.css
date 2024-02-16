@@ -1,0 +1,40 @@
+.create-post-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.create-post-form > input,
+.create-post-form > textarea,
+.create-post-form > button,
+.create-post-form > span {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.create-post-form > label {
+  margin-bottom: 0.2rem;
+}
+
+.published-wrapper {
+  display: flex;
+}
+
+#post-title {
+  padding: 0.5rem;
+}
+
+#post-text {
+  overflow-y: scroll;
+  padding: 0.5rem;
+  resize: vertical;
+  width: 100%;
+}
+
+.create-post-form > button {
+  max-width: 100px;
+}
