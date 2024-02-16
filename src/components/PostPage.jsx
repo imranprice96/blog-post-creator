@@ -118,7 +118,9 @@ function PostPage() {
             {token != null && (
               <span className="post-button-wrapper">
                 <button>
-                  <Link to="">Edit</Link>
+                  <Link to="/posts/create" state={post}>
+                    Edit
+                  </Link>
                 </button>
 
                 <button

@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import "../styles/PostCreate.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const PostCreate = ({ postData }) => {
+const PostCreate = () => {
+  const location = useLocation();
+  const postData = location.state;
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const [published, setPublished] = useState(false);
@@ -12,19 +15,21 @@ const PostCreate = ({ postData }) => {
   const [errors, setErrors] = useState([]);
   const [postid, setPostId] = useState("");
 
-  if (postData) {
-    setTitle(postData.title);
-    setText(postData.text);
-    setPublished(postData.published);
-    setPostId(postData.postid);
-  }
+  useEffect(() => {
+    if (postData) {
+      setTitle(postData.title);
+      setText(postData.text);
+      setPublished(postData.published);
+      setPostId(postData._id);
+    }
+  }, []);
 
   const handleCheck = () => {
     setPublished(!published);
   };
 
   const handleSubmit = (e) => {
-    postid != "" ? handleUpdate(e) : handleNew(e);
+    postData != null ? handleUpdate(e) : handleNew(e);
   };
 
   const handleNew = async (e) => {
@@ -101,7 +106,12 @@ const PostCreate = ({ postData }) => {
             <span className="published-wrapper">
               {" "}
               <label htmlFor="published">Published:</label>
-              <input type="checkbox" value={published} onChange={handleCheck} />
+              <input
+                type="checkbox"
+                value={published}
+                checked={published}
+                onChange={handleCheck}
+              />
             </span>
 
             <button type="submit">Submit</button>
