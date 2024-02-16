@@ -82,7 +82,7 @@ const PostCreate = () => {
         </Link>
         <div className="create-form-wrapper">
           <form onSubmit={handleSubmit} className="create-post-form">
-            <label htmlFor="title">Title:</label>
+            <label htmlFor="post-title">Title:</label>
             <input
               type="text"
               name="title"
@@ -92,7 +92,7 @@ const PostCreate = () => {
               required
               maxLength={100}
             />
-            <label htmlFor="text">Text:</label>
+            <label htmlFor="post-text">Text:</label>
             <textarea
               name="text"
               id="post-text"
@@ -107,6 +107,7 @@ const PostCreate = () => {
               {" "}
               <label htmlFor="published">Published:</label>
               <input
+                id="published"
                 type="checkbox"
                 value={published}
                 checked={published}
