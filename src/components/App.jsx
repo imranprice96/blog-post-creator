@@ -54,9 +54,11 @@ function App() {
       <div className="container">
         <div className="main-body">
           <span className="create-wrapper">
-            <Link to={"/posts/create"} className="create-link">
-              <button className="create-btn">Create post</button>
-            </Link>
+            {token != null && (
+              <Link to={"/posts/create"} className="create-link">
+                <button className="create-btn">Create post</button>
+              </Link>
+            )}
           </span>
           <div className="published-container">
             <h2 className="published-heading">Published</h2>
