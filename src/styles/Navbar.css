@@ -40,8 +40,11 @@
   width: 100%;
 }
 
-.nav-info a,
-button {
+.nav-info > a > button {
+  max-width: 100px;
+}
+
+.nav-info > button {
   max-width: 100px;
 }
 

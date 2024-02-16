@@ -4,6 +4,7 @@ import moment from "moment";
 import "../styles/PostPage.css";
 import Comments from "./Comments";
 import parse from "html-react-parser";
+import { useNavigate } from "react-router-dom";
 
 function PostPage() {
   const { postid } = useParams();
@@ -16,6 +17,8 @@ function PostPage() {
   const [comments, setComments] = useState();
   const [commentCount, setCommentCount] = useState(0);
   const url = import.meta.env.VITE_API_URL;
+
+  const navigate = useNavigate();
 
   function getDate(date) {
     const dateFormat = "Do MMMM YYYY, h:mm:ss a";
@@ -68,6 +71,23 @@ function PostPage() {
     getComments();
   }, []);
 
+  const handlePostDelete = async (postid) => {
+    const token = localStorage.getItem("jwt-token");
+    const response = await fetch(`${url}/api/posts/${postid}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    });
+    const result = await response.json();
+    if (result.success) {
+      navigate("/");
+    } else {
+      alert(result.error);
+    }
+  };
+
   if (error) {
     return (
       <div className="container">
@@ -101,20 +121,19 @@ function PostPage() {
                   <Link to="">Edit</Link>
                 </button>
 
-                <div
-                  className="delete-button"
+                <button
                   onClick={() => {
                     if (
                       window.confirm(
-                        "Are you sure you wish to delete this item?"
+                        "Are you sure you wish to delete this post?"
                       )
                     ) {
-                      console.log("*****");
+                      handlePostDelete(postid);
                     }
                   }}
                 >
-                  <button>Delete</button>
-                </div>
+                  Delete
+                </button>
               </span>
             )}
 

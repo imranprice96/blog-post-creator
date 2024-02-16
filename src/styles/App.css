@@ -32,3 +32,30 @@
   text-decoration: underline;
   text-underline-offset: 0.5rem;
 }
+
+.create-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.create-link {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+.create-btn {
+  background-color: var(--box-outer);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.create-btn:hover {
+  color: white;
+  background-color: var(--hover);
+}

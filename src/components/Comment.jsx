@@ -44,7 +44,7 @@ function Comment({ comment, postid, setCommentCount, setComments }) {
           <button
             onClick={() => {
               if (
-                window.confirm("Are you sure you wish to delete this item?")
+                window.confirm("Are you sure you wish to delete this comment?")
               ) {
                 handleCommentDelete(comment._id, postid);
               }

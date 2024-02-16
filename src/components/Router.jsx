@@ -5,6 +5,7 @@ import PostPage from "./PostPage";
 import ErrorPage from "./ErrorPage";
 import { useEffect, useState } from "react";
 import LoginPage from "./LoginPage";
+import CommentCreate from "./CommentCreate";
 
 function Layout({ setToken }) {
   return (
@@ -37,6 +38,12 @@ const Router = () => {
         {
           path: "login",
           element: <LoginPage setToken={setToken} />,
+          errorElement: <ErrorPage />,
+        },
+        {
+          path: "posts/create",
+          element: <CommentCreate />,
+
           errorElement: <ErrorPage />,
         },
       ],

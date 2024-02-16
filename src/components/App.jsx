@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "../styles/App.css";
 import Post from "./Post";
+import { Link } from "react-router-dom";
 
 function App() {
   const [posts, setPosts] = useState();
@@ -52,6 +53,11 @@ function App() {
     return (
       <div className="container">
         <div className="main-body">
+          <span className="create-wrapper">
+            <Link to={"/posts/create"} className="create-link">
+              <button className="create-btn">Create post</button>
+            </Link>
+          </span>
           <div className="published-container">
             <h2 className="published-heading">Published</h2>
             {posts.map(
@@ -76,5 +82,3 @@ function App() {
 }
 
 export default App;
-
-// Separate published and unpublished
