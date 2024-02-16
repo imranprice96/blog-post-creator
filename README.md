@@ -1,8 +1,14 @@
-# React + Vite
+# blog-post-creator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Blog post creator app created with react to be used with a custom api: https://github.com/imranprice96/blog-api.
 
-Currently, two official plugins are available:
+This functions as an app to create, edit and moderate blog posts which users view on the blog-app: https://github.com/imranprice96/blog-app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Posts and comments are stored in a mongodb database
+
+# Features
+
+- Viewing posts and comments: retrieved with GET request to the api
+- Adding comments: comments a send via POST request to the api
+- User login and authentication
+- CRUD methods for posts and comments
