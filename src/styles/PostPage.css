@@ -18,10 +18,11 @@ h1 {
   font-size: 2rem;
 }
 
-#post-text {
+.post-text {
   padding: 1rem 0 1rem 0;
   font-size: 1rem;
   line-height: 2rem;
+  white-space: pre-wrap;
 }
 
 .post-body {
@@ -60,4 +61,14 @@ h1 {
 .post-status {
   font-style: italic;
   font-size: 1.2rem;
+}
+
+.edit-btn {
+}
+
+.edit-link {
+  text-decoration: none;
+}
+
+.delete-btn {
 }

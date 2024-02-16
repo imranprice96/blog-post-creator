@@ -41,7 +41,7 @@ const StyledPostContainer = styled.div`
 const PostTitle = styled.h2`
   text-overflow: ellipsis;
   font-size: 1.5rem;
-  width: 50%;
+  width: 100%;
 `;
 
 const PostInfo = styled.div`

@@ -3,6 +3,7 @@ import "../styles/PostCreate.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import parse from "html-react-parser";
 
 const PostCreate = () => {
   const location = useLocation();
@@ -17,8 +18,8 @@ const PostCreate = () => {
 
   useEffect(() => {
     if (postData) {
-      setTitle(postData.title);
-      setText(postData.text);
+      setTitle(parse(postData.title));
+      setText(parse(postData.text));
       setPublished(postData.published);
       setPostId(postData._id);
     }

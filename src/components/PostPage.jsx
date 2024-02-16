@@ -14,6 +14,8 @@ function PostPage() {
   const [error, setError] = useState();
   const [token, setToken] = useState(localStorage.getItem("jwt-token"));
 
+  const [paragraphs, setParagraphs] = useState([]);
+
   const [comments, setComments] = useState();
   const [commentCount, setCommentCount] = useState(0);
   const url = import.meta.env.VITE_API_URL;
@@ -36,7 +38,7 @@ function PostPage() {
         }
         const data = await response.json();
         setPost(data);
-        //console.log(data);
+        //console.log(data.text);
       } catch (err) {
         setError(err.message);
         setPost(null);
@@ -117,13 +119,12 @@ function PostPage() {
           <div className="post-body">
             {token != null && (
               <span className="post-button-wrapper">
-                <button>
-                  <Link to="/posts/create" state={post}>
-                    Edit
-                  </Link>
-                </button>
+                <Link to="/posts/create" state={post} className="edit-link">
+                  <button className="edit-btn">Edit</button>
+                </Link>
 
                 <button
+                  className="delete-btn"
                   onClick={() => {
                     if (
                       window.confirm(
@@ -145,7 +146,7 @@ function PostPage() {
             </h2>
 
             <hr></hr>
-            <p id="post-text">{parse(post.text)}</p>
+            <p className="post-text">{parse(post.text)}</p>
             <hr></hr>
             <div className="post-footer">
               <p className="postpage-info">Posted: {getDate(post.createdAt)}</p>
